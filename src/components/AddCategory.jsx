@@ -5,7 +5,6 @@ export const AddCategory = () => {
     const[inputValue, setInputValue] = useState('One Punch');
 
     const onInputChange = ({target}) => {
-        console.log(target.value);
         setInputValue(target.value);
     }
    /*  sin desestructuracion
@@ -14,12 +13,21 @@ export const AddCategory = () => {
         setInputValue( event.target.value);
     }*/
 
+    const onSubmit = (event) => {
+        event.preventDefault();
+        console.log(inputValue)
+
+    }
+
+
     return(
-        <input 
+        <form onSubmit = { (event) => onSubmit(event)}>
+            <input 
             type="text" 
             placeholder="Ingrese una Categoria"
             value={ inputValue }
             onChange={ onInputChange }   // onChange={ (event) => onInputChange(event) }
         />
+        </form>
     )
 }
